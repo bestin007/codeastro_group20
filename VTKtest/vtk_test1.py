@@ -32,14 +32,16 @@ def plot_press(m, dims):
     z = coords[:, 2].reshape((N3, N2, N1))
     rho = m.point_data['Pressure']
     val = rho.reshape((N3, N2, N1))
-
-    plt.pcolormesh(x[:, 0, :], y[:, 0, :], val[:, 0, :], shading='gouraud', cmap='jet')
+    print(val[:,:,:].shape)
+    #x[:, 0, :], y[:, 0, :],
+    plt.pcolormesh( val[:, :, 32], shading='gouraud', cmap='jet')
+    plt.gca().set_aspect('equal')
     plt.colorbar()
     plt.show()
 
 def main():
     """ Main function to execute the script functionality. """
-    fp = '/home/joseph/Downloads/VTKtest/NRotSphere001N000.vtk'
+    fp = 'NRotSphere003N100.vtk'
 
     # Load and display mesh
     m = load_mesh(fp)
