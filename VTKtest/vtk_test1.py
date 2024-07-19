@@ -70,7 +70,7 @@ def slicer(m, dims, parameters, slices, dimensions):
         elif dimensions[i] == 'z':
             pl = ax.pcolormesh(x[:,slices[i],slices[i]],y[slices[i],:,slices[i]],vals_to_plot[:,:,slices[i]],cmap='jet')
         fig.colorbar(pl)
-        ax.set_title(parameters[i])
+        ax.set_title(parameters[i]+', '+dimensions[i]+'='+str(slices[i]))
     plt.tight_layout()
     plt.show()
     
@@ -87,7 +87,7 @@ def main():
     dims = get_dims(m)
     par = ['Density','Pressure','Density','Pressure']
     dimen = ['x','x','x','x']
-    sly = [28,36,28,36]
+    sly = [28,28,36,36]
     slicer(m, dims,par,sly,dimen)
 
 if __name__ == "__main__":
