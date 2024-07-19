@@ -8,7 +8,7 @@
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../VTKtest'))
 
 project = 'VTKAnimate'
 copyright = '2024, Luis Arcos, Zenghui Zou, Joseph saji, Bestin James'

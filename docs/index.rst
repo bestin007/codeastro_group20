@@ -10,7 +10,9 @@ Welcome to VTKAnimate's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   vtk_test1.rst
 
+   
 
 Indices and tables
 ==================
