@@ -5,7 +5,12 @@ import os
 import pyvista as pv
 
 def load_mesh(fp):
-    """ load VTK file  """
+    """ 
+    Function to load VTK file from a local directory into a mesh pyvista object (pyvista.core.grid.ImageData).
+    Args:
+        fp (str): A string with the path and name of the VTK file.
+    Notes: The path can be written in absolute or relative path.
+    """
     if not os.path.exists(fp):
         print(f"Error: File not found at {fp}")
         sys.exit(1)
@@ -13,7 +18,13 @@ def load_mesh(fp):
     return pv.read(fp)
 
 def print_mesh_info(m):
-    """ Print mesh info. """
+    """ 
+    Function to print details of a mesh pyvista object (pyvista.core.grid.ImageData) such as dimensions, 
+    number of data points, name of parameters, number of parameters, etc.
+    Args:
+        m (pyvista.core.grid.ImageData): The array of data containing all the data and info about the simulation 
+        (output from 'load_mesh' function)
+    """
     print(m)
     if m.point_data:
         print("Point Data:")
@@ -26,13 +37,14 @@ def get_dims(m):
 def slicer(m, dims, parameters, slices, dimensions):
     """
     Function to plot slices of the parameters data given along any of the 3 axis at any length.
-    Currently only supporting 3D arrays from vtk files
+    Currently only supporting 3D arrays from vtk files.
     Args:
-        m (pyvista.core.grid.ImageData): The array of data containing all the data and info about the simulation (output from 'load_mesh' function)
+        m (pyvista.core.grid.ImageData): The pyvista object containing all the data and info about the simulation 
+        (output from 'load_mesh' function)
         dims (tuple of int): Number of cells in each direction (output from get_dims function)
         parameters (tuple of str): Name of data parameters to plot a slice of
         slices (tuple of int): Lengths at which a slice plot will be made given in cell numbers NOT physical length
-        dimensions (tuple of str): Dimensions along a slice will be made. Valide options are: 'x', 'y', 'z'
+        dimensions (tuple of str): Dimensions along a slice will be made. Valid options are: 'x', 'y', 'z'
     Notes: The length of parameters, slices and dimensions tuples has to be the same.
     """
     if not len(parameters)==len(slices)==len(dimensions):
@@ -61,11 +73,6 @@ def slicer(m, dims, parameters, slices, dimensions):
         ax.set_title(parameters[i])
     plt.tight_layout()
     plt.show()
-#    print(m.point_data)
-#    plt.pcolormesh(x[:,slc,slc], y[slc,:,slc],val[:, slc, :], cmap='jet')
-    #plt.gca().set_aspect('equal')
-#    plt.colorbar()
-#    plt.show()
     
 def main():
     """ Main function to execute the script functionality. """
